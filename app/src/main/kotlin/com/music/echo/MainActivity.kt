@@ -8,6 +8,7 @@ import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.KeyEvent
 import android.os.IBinder
 import android.util.Log
 import android.view.View
@@ -257,6 +258,24 @@ val EmphasizedEasing = CubicBezierEasing(0.2f, 0.0f, 0.0f, 1.0f)
 @Suppress("DEPRECATION", "ASSIGNED_BUT_NEVER_ACCESSED_VARIABLE")
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
+        if (event.action == KeyEvent.ACTION_DOWN) {
+            val p = playerConnection?.player
+            when (event.keyCode) {
+                KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE -> {
+                    p?.let { if (it.isPlaying) it.pause() else it.play() }
+                    return true
+                }
+                KeyEvent.KEYCODE_MEDIA_PLAY -> { p?.play(); return true }
+                KeyEvent.KEYCODE_MEDIA_PAUSE -> { p?.pause(); return true }
+                KeyEvent.KEYCODE_MEDIA_NEXT, KeyEvent.KEYCODE_CHANNEL_UP -> { p?.seekToNext(); return true }
+                KeyEvent.KEYCODE_MEDIA_PREVIOUS, KeyEvent.KEYCODE_CHANNEL_DOWN -> { p?.seekToPrevious(); return true }
+            }
+        }
+        return super.dispatchKeyEvent(event)
+    }
+
   companion object {
     private const val EXTRA_VOICE_REQUEST_HANDLED = "echo.music.voice_request_handled"
     const val ACTION_SEARCH = "echo.music.iad1tya.action.SEARCH"

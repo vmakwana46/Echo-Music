@@ -1040,6 +1040,7 @@ fun BottomSheetPlayer(
           )
 
           OutlinedIconButton(
+modifier = Modifier.tvFocusable(),
             onClick = {
               showSleepTimerDialog = false
               playerConnection.service.sleepTimer.start(-1)
@@ -1986,6 +1987,7 @@ fun BottomSheetPlayer(
               ->
               if (showLyrics) {
                 FilledIconButton(
+modifier = Modifier.tvFocusable(),
                   onClick = { isFullScreen = !isFullScreen },
                   shape = shareShape,
                   colors =
@@ -2009,6 +2011,7 @@ fun BottomSheetPlayer(
                 }
               } else {
                 FilledIconButton(
+modifier = Modifier.tvFocusable(),
                   onClick = {
                     mediaMetadata?.let { meta ->
                       when (download?.state) {
@@ -2075,6 +2078,7 @@ fun BottomSheetPlayer(
               if (showLyrics) {
                 val currentLyrics by playerConnection.currentLyrics.collectAsState(initial = null)
                 FilledIconButton(
+modifier = Modifier.tvFocusable(),
                   onClick = {
                     menuState.show {
                       echo.music.iad1tya.ui.menu.LyricsMenu(
@@ -2110,6 +2114,7 @@ fun BottomSheetPlayer(
                   verticalAlignment = Alignment.CenterVertically,
                 ) {
                   FilledIconButton(
+modifier = Modifier.tvFocusable(),
                     onClick = onToggleDislike,
                     shape = middleShape,
                     colors =
@@ -2135,6 +2140,7 @@ fun BottomSheetPlayer(
                   }
 
                   FilledIconButton(
+modifier = Modifier.tvFocusable(),
                     onClick = playerConnection::toggleLike,
                     shape = favShape,
                     colors =
@@ -2952,6 +2958,7 @@ fun BottomSheetPlayer(
                   .padding(horizontal = if (showSeekButtons) 8.dp else PlayerHorizontalPadding),
             ) {
               FilledIconButton(
+modifier = Modifier.tvFocusable(),
                 onClick = {
                   if (backLongPressFired) backLongPressFired = false
                   else playerConnection.seekToPrevious()
@@ -2979,6 +2986,7 @@ fun BottomSheetPlayer(
 
               if (showSeekButtons) {
                 FilledIconButton(
+modifier = Modifier.tvFocusable(),
                   onClick = { seekBy(-10_000L) },
                   enabled = seekButtonsEnabled,
                   shape = seekButtonSquircle,
@@ -3025,6 +3033,7 @@ fun BottomSheetPlayer(
                 )
 
               FilledIconButton(
+modifier = Modifier.tvFocusable(),
                 onClick = {
                   if (isListenTogetherGuest) {
                     playerConnection.toggleMute()
@@ -3086,6 +3095,7 @@ fun BottomSheetPlayer(
 
               if (showSeekButtons) {
                 FilledIconButton(
+modifier = Modifier.tvFocusable(),
                   onClick = { seekBy(10_000L) },
                   enabled = seekButtonsEnabled,
                   shape = seekButtonSquircle,
@@ -3112,6 +3122,7 @@ fun BottomSheetPlayer(
               }
 
               FilledIconButton(
+modifier = Modifier.tvFocusable(),
                 onClick = playerConnection::seekToNext,
                 enabled = (canSkipNext || isLanRemote) && !isListenTogetherGuest,
                 shape = mainButtonSquircle,
@@ -3141,6 +3152,7 @@ fun BottomSheetPlayer(
             ) {
               Box(modifier = Modifier.weight(1f)) {
                 ResizableIconButton(
+modifier = Modifier.tvFocusable(),
                   icon = R.drawable.apple_skip_previous,
                   enabled = (canSkipPrevious || isLanRemote) && !isListenTogetherGuest,
                   color = TextBackgroundColor,
@@ -3201,6 +3213,7 @@ fun BottomSheetPlayer(
 
               Box(modifier = Modifier.weight(1f)) {
                 ResizableIconButton(
+modifier = Modifier.tvFocusable(),
                   icon = R.drawable.apple_skip_next,
                   enabled = (canSkipNext || isLanRemote) && !isListenTogetherGuest,
                   color = TextBackgroundColor,
