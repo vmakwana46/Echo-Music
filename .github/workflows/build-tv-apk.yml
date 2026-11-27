@@ -1,4 +1,4 @@
-name: Build TV APK
+﻿name: Build TV APK
 on:
   push:
     branches: [ main ]
@@ -17,7 +17,7 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
       - name: Build Debug APK
-        run: ./gradlew assembleUniversalGmsRelease --stacktrace
+        run: ./gradlew assembleUniversalFossDebug --stacktrace
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
