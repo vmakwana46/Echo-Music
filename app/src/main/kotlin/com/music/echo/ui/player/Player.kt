@@ -1040,7 +1040,6 @@ fun BottomSheetPlayer(
           )
 
           OutlinedIconButton(
-modifier = Modifier.tvFocusable(),
             onClick = {
               showSleepTimerDialog = false
               playerConnection.service.sleepTimer.start(-1)
@@ -1987,7 +1986,6 @@ modifier = Modifier.tvFocusable(),
               ->
               if (showLyrics) {
                 FilledIconButton(
-modifier = Modifier.tvFocusable(),
                   onClick = { isFullScreen = !isFullScreen },
                   shape = shareShape,
                   colors =
@@ -2011,7 +2009,6 @@ modifier = Modifier.tvFocusable(),
                 }
               } else {
                 FilledIconButton(
-modifier = Modifier.tvFocusable(),
                   onClick = {
                     mediaMetadata?.let { meta ->
                       when (download?.state) {
@@ -2078,7 +2075,6 @@ modifier = Modifier.tvFocusable(),
               if (showLyrics) {
                 val currentLyrics by playerConnection.currentLyrics.collectAsState(initial = null)
                 FilledIconButton(
-modifier = Modifier.tvFocusable(),
                   onClick = {
                     menuState.show {
                       echo.music.iad1tya.ui.menu.LyricsMenu(
@@ -2114,7 +2110,6 @@ modifier = Modifier.tvFocusable(),
                   verticalAlignment = Alignment.CenterVertically,
                 ) {
                   FilledIconButton(
-modifier = Modifier.tvFocusable(),
                     onClick = onToggleDislike,
                     shape = middleShape,
                     colors =
@@ -2140,7 +2135,6 @@ modifier = Modifier.tvFocusable(),
                   }
 
                   FilledIconButton(
-modifier = Modifier.tvFocusable(),
                     onClick = playerConnection::toggleLike,
                     shape = favShape,
                     colors =
@@ -2958,7 +2952,6 @@ modifier = Modifier.tvFocusable(),
                   .padding(horizontal = if (showSeekButtons) 8.dp else PlayerHorizontalPadding),
             ) {
               FilledIconButton(
-modifier = Modifier.tvFocusable(),
                 onClick = {
                   if (backLongPressFired) backLongPressFired = false
                   else playerConnection.seekToPrevious()
@@ -2986,7 +2979,6 @@ modifier = Modifier.tvFocusable(),
 
               if (showSeekButtons) {
                 FilledIconButton(
-modifier = Modifier.tvFocusable(),
                   onClick = { seekBy(-10_000L) },
                   enabled = seekButtonsEnabled,
                   shape = seekButtonSquircle,
@@ -3033,7 +3025,6 @@ modifier = Modifier.tvFocusable(),
                 )
 
               FilledIconButton(
-modifier = Modifier.tvFocusable(),
                 onClick = {
                   if (isListenTogetherGuest) {
                     playerConnection.toggleMute()
@@ -3095,7 +3086,6 @@ modifier = Modifier.tvFocusable(),
 
               if (showSeekButtons) {
                 FilledIconButton(
-modifier = Modifier.tvFocusable(),
                   onClick = { seekBy(10_000L) },
                   enabled = seekButtonsEnabled,
                   shape = seekButtonSquircle,
@@ -3122,7 +3112,6 @@ modifier = Modifier.tvFocusable(),
               }
 
               FilledIconButton(
-modifier = Modifier.tvFocusable(),
                 onClick = playerConnection::seekToNext,
                 enabled = (canSkipNext || isLanRemote) && !isListenTogetherGuest,
                 shape = mainButtonSquircle,
@@ -3152,7 +3141,6 @@ modifier = Modifier.tvFocusable(),
             ) {
               Box(modifier = Modifier.weight(1f)) {
                 ResizableIconButton(
-modifier = Modifier.tvFocusable(),
                   icon = R.drawable.apple_skip_previous,
                   enabled = (canSkipPrevious || isLanRemote) && !isListenTogetherGuest,
                   color = TextBackgroundColor,
@@ -3213,7 +3201,6 @@ modifier = Modifier.tvFocusable(),
 
               Box(modifier = Modifier.weight(1f)) {
                 ResizableIconButton(
-modifier = Modifier.tvFocusable(),
                   icon = R.drawable.apple_skip_next,
                   enabled = (canSkipNext || isLanRemote) && !isListenTogetherGuest,
                   color = TextBackgroundColor,
